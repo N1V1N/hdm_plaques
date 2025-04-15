@@ -1,0 +1,14 @@
+[build]
+  publish = "/"
+
+# Exclude sitemap.xml from redirects
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap.xml"
+  status = 200
+
+# Redirect all other URLs to index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

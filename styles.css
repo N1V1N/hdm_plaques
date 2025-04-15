@@ -1,0 +1,1502 @@
+/* Import fonts at the top */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+/* Variables */
+:root {
+    --primary-color: #1a1a1a;
+    --secondary-color: #2a2a2a;
+    --accent-color: #c0c0c0;
+    --text-color: #ffffff;
+    --titanium-color: #787878;
+    --aluminum-color: #a8a8a8;
+    --damascus-color: #4a4a4a;
+    --transition: all 0.3s ease;
+    --glow: 0 0 5px rgba(192, 192, 192, 0.3);
+    --light-bg: #2a2a2a;
+    --metal-gradient: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+    --navbar-height: 36px; /* Reduced from 72px */
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Cinzel', serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: var(--primary-color);
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding-top: calc(var(--navbar-height) * 1); /* Reduced from 2x to 1x to match the new black bar height */
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: var(--navbar-height); /* Positioned right below the black bar */
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(26, 26, 26, 0.67);
+    padding: 0; /* Changed from 1rem to ensure vertical centering */
+    backdrop-filter: blur(5px);
+    height: calc(var(--navbar-height) * 2); /* Doubled the height to fully encompass the centered content */
+    display: flex; /* Added to ensure vertical centering */
+    align-items: center; /* Added to ensure vertical centering */
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    height: 100%; /* Ensure the container takes full height */
+}
+
+.logo-container {
+    position: relative; /* For absolute positioning of EST 2024 */
+    margin-right: 2rem;
+}
+
+.logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    font-weight: normal; /* Changed from bold to normal */
+    white-space: nowrap;
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    /* Ensure the logo itself is centered on the bar */
+    position: relative;
+    top: 0;
+}
+
+.logo .wallet-text {
+    font-size: 0.618em; /* Golden ratio (1/1.618) for "Wallet" text */
+    letter-spacing: 1.5px; /* Slightly tighter letter spacing */
+}
+
+.wallet-text {
+    opacity: 0.55; /* Base opacity for wallet text */
+}
+
+.w-letter {
+    font-size: 1.618em; /* Golden ratio for the first letter */
+    font-style: italic; /* Keep it italic like the V in Variable */
+    font-weight: bold; /* Add bold styling to the W */
+    opacity: .98; /* Increased from 0.35 to 0.55 */
+    margin-right: -.12em; /* Very slightly reduced space after W */
+}
+
+.est-year {
+    position: absolute;
+    left: 4%;
+    top: 100%;
+    margin-top: -0.7em;
+    width: 164px;
+    white-space: nowrap;
+    font-size: 0.75em;
+    opacity: 0;
+    text-align: left;
+    letter-spacing: 2px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--accent-color);
+}
+
+/* Hide hamburger menu by default */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.nav-toggle:hover {
+    color: var(--accent-color);
+}
+
+/* Main Content */
+main {
+    margin-top: 30px;
+    padding-top: 40px;
+}
+
+.content-section {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.content-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* This ensures all content inside is centered */
+}
+
+.hero {
+    position: relative;
+    text-align: center;
+    padding: 0;
+    margin-top: calc(-1 * var(--navbar-height) * 1); /* Reduced from 2x to 1x to match the new black bar height */
+    background: linear-gradient(to bottom, 
+        var(--primary-color) calc(var(--navbar-height) * 1),
+        transparent 100%);
+}
+
+.hero .container {
+    padding-top: calc(var(--navbar-height) * 2 + 10px); /* Increased padding to prevent text from running under the navbar */
+    padding-bottom: 1rem;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--metal-gradient);
+    opacity: 0.1;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: calc(0.3rem);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    position: relative;
+    text-shadow: var(--glow);
+    animation: textGlow 2s ease-in-out infinite;
+    line-height: 1.1;
+}
+
+.hero h1 div {
+    display: block;
+}
+
+.made-in {
+    font-size: clamp(0.9rem, 2.5vw, 1.5rem);
+    letter-spacing: 0.2em;
+    display: block;
+    margin-bottom: calc(0.15rem);
+    text-shadow: 0 0 3px rgba(192, 192, 192, 0.2);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 0.5rem;
+    position: relative;
+}
+
+.stackable-note {
+    font-size: 0.7rem;
+    color: var(--accent-color);
+    font-style: italic;
+    margin: 0.5rem auto 0.75rem;
+    opacity: 0.85;
+}
+
+.hero-image {
+    max-width: 400px; /* Reduced from 500px to make the wallet appear smaller */
+    margin: 0.75rem auto 1.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    display: block !important;
+    cursor: pointer;
+    filter: none;
+    transition: transform 0.3s ease;
+}
+
+/* Image navigation overlay */
+.hero-image {
+    position: relative;
+}
+
+.image-navigation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    pointer-events: none; /* This allows clicks to pass through to the image by default */
+    z-index: 2;
+}
+
+.nav-left, .nav-right {
+    flex: 1;
+    height: 100%;
+    pointer-events: auto; /* This makes these divs clickable */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.nav-left:hover, .nav-right:hover {
+    background-color: transparent; /* Remove the background highlight */
+}
+
+/* Prevent tap highlight color on mobile devices */
+.hero-image, .nav-left, .nav-right, .image-navigation {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Only show a subtle indicator on desktop */
+@media (min-width: 769px) {
+    .nav-left::before, .nav-right::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 20px;
+        height: 20px;
+        border-top: 2px solid rgba(255, 255, 255, 0.5);
+        border-left: 2px solid rgba(255, 255, 255, 0.5);
+        transform: translateY(-50%);
+        opacity: 0;
+        transition: opacity .3s ease;
+    }
+    
+    .nav-left:hover::before, .nav-right:hover::after {
+        opacity: 0.27; /* Reduced by 66% from 0.8 */
+    }
+    
+    .nav-left::before {
+        left: 25%;
+        transform: translateY(-50%) translateX(-50%) rotate(-45deg);
+    }
+    
+    .nav-right::after {
+        right: 25%;
+        transform: translateY(-50%) translateX(50%) rotate(135deg);
+    }
+}
+
+/* Removing the hover-up effect on desktop */
+/* 
+@media (min-width: 769px) {
+    .hero-image:hover {
+        transform: translateY(-5px);
+    }
+}
+*/
+
+.subtle-bounce-animation {
+    animation: subtle-bounce 2.6s ease infinite;
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    padding: 10px 0; /* Added padding on top and bottom to make the wallet appear smaller vertically */
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: none;
+    filter: none;
+    display: block;
+    margin: 0 auto;
+    display: block !important;
+}
+
+.united-states {
+    display: inline-block;
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.6);
+}
+
+.of-america {
+    display: block;
+    line-height: 0.95; /* Tighter spacing with line above */
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.6);
+}
+
+.of-america .of {
+    font-size: 0.55em;
+    opacity: 0.85;
+    vertical-align: middle;
+    display: inline-block;
+    position: relative;
+    top: 0.1em;
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.6);
+}
+
+.of-america::first-word {
+    font-size: 0.85em;
+    opacity: 0.85;
+}
+
+.image-click-hint {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-top: 0.3rem;
+    font-style: italic;
+}
+
+@keyframes subtle-bounce {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-5px); }
+    50% { transform: translateY(5px); }
+    75% { transform: translateY(-3px); }
+    100% { transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --navbar-height: 30px; /* Reduced from 60px to 30px - cutting the black bar height in half */
+    }
+    
+    .navbar {
+        padding: 0.5rem 0;
+        height: calc(var(--navbar-height) * 2); /* Make sure we maintain double height on mobile */
+    }
+
+    .navbar .container {
+        padding: 0 1rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .nav-logo {
+        font-size: 1.15rem;
+    }
+
+    .est-year {
+        font-size: 0.55rem;
+        letter-spacing: 2px; 
+    }
+
+    .nav-menu {
+        position: fixed;
+        right: -100%;
+        top: 30px;
+        flex-direction: column;
+        background: var(--primary-color);
+        width: auto;
+        min-width: 200px;
+        border-radius: 0 0 0 10px;
+        text-align: right;
+        transition: 0.3s;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        padding: 0.5rem;
+        margin: 0;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-menu li {
+        margin: 0.5rem 0;
+    }
+
+    .nav-menu a {
+        padding: 0.5rem 1rem;
+        display: block;
+        font-size: 0.9rem;
+        border-radius: 4px;
+    }
+
+    .nav-menu a:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--text-color);
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        margin-left: auto;
+    }
+
+    main {
+        padding-top: 30px;
+    }
+
+    section {
+        scroll-margin-top: 35px;
+    }
+
+    .hero {
+        padding: 1rem 1rem;
+        margin-top: calc(-1 * var(--navbar-height) * 1); /* Reduced from 2x to 1x to match the new black bar height */
+        background: linear-gradient(to bottom, 
+            var(--primary-color) calc(var(--navbar-height) * 1),
+            transparent 100%);
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+        margin-top: 0.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .materials-grid {
+        gap: 1.5rem;
+        justify-content: center; /* Ensures perfect centering */
+    }
+    
+    .material-card {
+        flex: 0 0 100%; /* Full width */
+        max-width: 300px; /* Maintain consistent width */
+        margin-bottom: 0.5rem;
+    }
+    
+    .specs {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .hero .container {
+        padding-top: calc(var(--navbar-height) * 1 + 10px); /* Reduced by half from (var(--navbar-height) * 2 + 20px) */
+    }
+
+    .stackable-note {
+        font-size: 0.7rem;
+        margin: 0.4rem auto 0.6rem;
+    }
+}
+
+.material-showcase,
+.material-icon,
+.model-viewer,
+#three-container,
+.product-placeholder,
+.placeholder-text {
+    display: none;
+}
+
+/* Section-specific scroll margins */
+#materials {
+    scroll-margin-top: 0px; /* Completely removed margin to make the section stop at the very top */
+}
+
+#process, #waitlist {
+    scroll-margin-top: 36px; /* Kept the original value */
+}
+
+/* Mobile-specific scroll margins */
+@media (max-width: 768px) {
+    #materials {
+        scroll-margin-top: 36px; /* Restore original value for mobile */
+    }
+}
+
+/* Adjusted badge positioning and fixed scroll behavior for sections */
+section {
+    scroll-margin-top: 40px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+.matrix-container {
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+    position: relative;
+}
+
+/* Materials Grid */
+.materials-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Ensures perfect centering */
+    gap: 2rem;
+    margin: 3rem auto 0;
+    max-width: 900px;
+}
+
+.material-card {
+    background: var(--light-bg);
+    padding: 2rem;
+    border: 1px solid var(--accent-color);
+    transition: var(--transition);
+    position: relative;
+    overflow: visible;
+    flex: 0 0 calc(33.333% - 2rem); /* One third width minus the gap */
+    min-width: 250px; /* Minimum width for each card */
+    max-width: 300px; /* Maximum width for each card */
+    z-index: 1;
+}
+
+.material-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--metal-gradient);
+    opacity: 0.1;
+    transition: var(--transition);
+}
+
+.material-card:hover::before {
+    opacity: 0.2;
+}
+
+.material-card h3 {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.material-card.active {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(192, 192, 192, 0.1);
+}
+
+.material-card.active .availability {
+    color: var(--accent-color);
+    text-shadow: var(--glow);
+}
+
+.tier-badge {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    z-index: 2; /* Higher than the material card but lower than navbar */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    color: black;
+    text-shadow: none;
+}
+
+.tier-badge.premium {
+    background-color: var(--titanium-color);
+    color: white;
+}
+
+.tier-badge.standard {
+    background-color: var(--aluminum-color);
+}
+
+.tier-badge.holy {
+    background-color: var(--damascus-color);
+    color: white;
+}
+
+.limited-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(192, 192, 192, 0.2);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    animation: pulse 2s infinite;
+    font-weight: bold;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.availability {
+    display: block;
+    margin-top: 1.8rem; /* Reduced from 1rem to 0.5rem */
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.pulse-effect {
+    display: block;
+    margin-top: 1.8rem; /* Reduced from 1rem to 0.5rem */
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: var(--text-color);
+    animation: subtle-pulse 1.8s infinite ease-in-out;
+    cursor: pointer;
+}
+
+/* Pulse effect animation */
+@keyframes subtle-pulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+.order-limit {
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    margin-top: 0.8rem;
+    opacity: 0.85;
+    font-style: italic;
+}
+
+@media (max-width: 992px) {
+    .material-card {
+        flex: 0 0 calc(50% - 2rem); /* Half width minus the gap */
+    }
+}
+
+/* Process Section */
+.process-highlights {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.process-narrow {
+  max-width: 340px;
+  margin: 0 auto 1.5rem auto;
+  text-align: center;
+}
+
+.specs {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-top: 3rem;
+}
+
+.spec-item {
+    text-align: center;
+}
+
+.spec-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    display: block;
+    margin-bottom: 0.5rem;
+    text-shadow: var(--glow);
+}
+
+.spec-label {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+}
+
+/* Waiting List Form Styles */
+.waitlist-form {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--light-bg);
+    border: 1px solid var(--accent-color);
+    position: relative;
+}
+
+.waitlist-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--metal-gradient);
+    opacity: 0.1;
+    transition: var(--transition);
+}
+
+.waitlist-form:hover::before {
+    opacity: 0.2;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--accent-color);
+    color: var(--text-color);
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    box-shadow: var(--glow);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.submit-btn {
+    background: transparent;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    padding: 0.8rem 2rem;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn:hover {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    text-shadow: none;
+}
+
+.submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.form-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 4px;
+    text-align: center;
+    display: none;
+}
+
+.form-message:not(:empty) {
+    display: block;
+}
+
+.form-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.form-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Launch Note */
+.launch-note {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(192, 192, 192, 0.1);
+    border: 1px solid var(--accent-color);
+    position: relative;
+}
+
+.launch-note .highlight {
+    display: block;
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: var(--glow);
+}
+
+.launch-note p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.batch-label {
+    display: block;
+    margin-bottom: -15px; /* Increased negative margin to bring the elements even closer */
+}
+
+.orders-label {
+    display: block;
+}
+
+/* Patent Note */
+.patent-note {
+    color: var(--accent-color);
+    font-size: 0.95em; /* Increased from 0.8em for more prominence */
+    text-transform: uppercase;
+    letter-spacing: 3px; /* Tripled from 1px to 3px */
+    margin-top: -1rem;
+    text-align: center;
+    opacity: 0.7;
+}
+
+/* Waitlist Note */
+.waitlist-note {
+    color: var(--accent-color);
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.44rem;
+    margin-bottom: -0.9rem; /* Even more negative margin to pull the form closer */
+    text-align: center;
+    opacity: 0.7;
+}
+
+/* Pricing Note */
+.pricing-note {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-shadow: var(--glow);
+}
+
+.pricing-note strong {
+    font-weight: bold;
+}
+
+.price-note {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    opacity: 0.8;
+    margin-top: 0.2rem;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid var(--accent-color);
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Adjust the brand name to match the date width exactly */
+.brand-name {
+    margin-bottom: 0.2rem;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 0.8em; /* Further reduce to match date width exactly */
+    transform-origin: center;
+    letter-spacing: -0.5px; /* Tighter letter spacing */
+    display: block;
+    width: 175px; /* Set a fixed width based on the date width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.est-date {
+    font-size: 0.75em;
+    opacity: 0.5;
+    margin-top: -0.75rem;
+    white-space: nowrap;
+    text-align: center;
+    letter-spacing: 1px; /* Maintain consistent letter spacing */
+    display: block;
+    width: 175px; /* Set the same fixed width as the brand name */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Contact Info */
+.contact-info {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.contact-info a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-info a:hover {
+    text-shadow: var(--glow);
+}
+
+/* Add specific styling for the footer wallet text */
+footer .wallet-text {
+    font-size: 0.618em; /* Golden ratio (1/1.618) for "Wallet" text in footer */
+    letter-spacing: 1.5px; /* Slightly tighter letter spacing */
+    opacity: 0.55; /* Base opacity for wallet text */
+}
+
+/* Animations */
+@keyframes textGlow {
+    0%, 100% { text-shadow: 0 0 5px rgba(192, 192, 192, 0.3); }
+    50% { text-shadow: 0 0 10px rgba(192, 192, 192, 0.5); }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(192, 192, 192, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(192, 192, 192, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(192, 192, 192, 0);
+    }
+}
+
+/* Matrix effect styling */
+.matrix-vines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: calc(var(--navbar-height) * 2); /* Height tied to navbar-height variable for consistent scaling */
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.vine {
+    position: absolute;
+    width: 2px;
+    background: linear-gradient(to bottom, 
+        rgba(192, 192, 192, 0) 0%,
+        rgba(192, 192, 192, 0.4) 50%,
+        rgba(192, 192, 192, 0) 100%);
+    animation: vineFlow 8s infinite;
+    transform-origin: top;
+}
+
+/* Each vine's height is scaled relative to the navbar height */
+.vine:nth-child(1) {
+    left: 20%;
+    animation-delay: 0s;
+    height: calc(var(--navbar-height) * 3);
+}
+
+.vine:nth-child(2) {
+    left: 40%;
+    animation-delay: -2s;
+    height: calc(var(--navbar-height) * 2.4);
+}
+
+.vine:nth-child(3) {
+    left: 60%;
+    animation-delay: -4s;
+    height: calc(var(--navbar-height) * 3.2);
+}
+
+.vine:nth-child(4) {
+    left: 80%;
+    animation-delay: -1s;
+    height: calc(var(--navbar-height) * 2.8);
+}
+
+.vine:nth-child(5) {
+    left: 10%;
+    animation-delay: -3s;
+    height: calc(var(--navbar-height) * 3.5);
+}
+
+.vine:nth-child(6) {
+    left: 30%;
+    animation-delay: -5s;
+    height: calc(var(--navbar-height) * 2.6);
+}
+
+.vine:nth-child(7) {
+    left: 50%;
+    animation-delay: -2.5s;
+    height: calc(var(--navbar-height) * 3.3);
+}
+
+.vine:nth-child(8) {
+    left: 70%;
+    animation-delay: -4.5s;
+    height: calc(var(--navbar-height) * 2.7);
+}
+
+.vine:nth-child(9) {
+    left: 90%;
+    animation-delay: -1.5s;
+    height: calc(var(--navbar-height) * 3.1);
+}
+
+.vine:nth-child(10) {
+    left: 15%;
+    animation-delay: -3.5s;
+    height: calc(var(--navbar-height) * 2.9);
+}
+
+.vine:nth-child(11) {
+    left: 5%;
+    animation-delay: -4.2s;
+    height: calc(var(--navbar-height) * 3.5);
+}
+
+.vine:nth-child(12) {
+    left: 25%;
+    animation-delay: -1.8s;
+    height: calc(var(--navbar-height) * 2.7);
+}
+
+.vine:nth-child(13) {
+    left: 35%;
+    animation-delay: -5.2s;
+    height: calc(var(--navbar-height) * 3.3);
+}
+
+.vine:nth-child(14) {
+    left: 55%;
+    animation-delay: -3.7s;
+    height: calc(var(--navbar-height) * 3.7);
+}
+
+.vine:nth-child(15) {
+    left: 70%;
+    animation-delay: -2.3s;
+    height: calc(var(--navbar-height) * 2.8);
+}
+
+@keyframes vineFlow {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%) scaleY(1);
+    }
+    20% {
+        opacity: 0.8;
+        transform: translateY(0) scaleY(1.2);
+    }
+    40% {
+        opacity: 0.5;
+        transform: translateY(20%) scaleY(0.8);
+    }
+    60% {
+        opacity: 0.8;
+        transform: translateY(40%) scaleY(1.1);
+    }
+    80% {
+        opacity: 0.3;
+        transform: translateY(60%) scaleY(0.9);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(80%) scaleY(1);
+    }
+}
+
+/* Make sure navbar is above vines */
+.navbar {
+    z-index: 2;
+}
+
+/* Responsive Design */
+@media (min-width: 1440px) {
+    :root {
+        --navbar-height: 25px; /* Further reduced for better proportions on large screens */
+    }
+    
+    .matrix-vines {
+        height: calc(var(--navbar-height) * 2); /* Keep the original double height ratio */
+    }
+    
+    .navbar {
+        height: calc(var(--navbar-height) * 1.8); /* Translucent bar height */
+    }
+    
+    .hero {
+        margin-top: calc(-1 * var(--navbar-height) * 2); /* Match the black bar height */
+        background: linear-gradient(to bottom, 
+            var(--primary-color) calc(var(--navbar-height) * 2),
+            transparent 100%);
+    }
+    
+    .logo {
+        font-size: 1rem; /* Further reduced for better proportions on large screens */
+    }
+    
+    .est-year {
+        font-size: 0.6em; /* Further reduced for better proportions */
+        letter-spacing: 1.5px; /* Slightly reduced for proportion */
+    }
+    
+    .nav-menu a, .nav-toggle {
+        font-size: 0.8rem; /* Scaled down menu items */
+    }
+}
+
+@media (min-width: 2560px) {
+    :root {
+        --navbar-height: 20px; /* Further reduced for 4K screens */
+    }
+    
+    .matrix-vines {
+        height: calc(var(--navbar-height) * 2); /* Keep the original double height ratio */
+    }
+    
+    .navbar {
+        height: calc(var(--navbar-height) * 1.5); /* Translucent bar height */
+    }
+    
+    .hero {
+        margin-top: calc(-1 * var(--navbar-height) * 2); /* Match the black bar height */
+        background: linear-gradient(to bottom, 
+            var(--primary-color) calc(var(--navbar-height) * 2),
+            transparent 100%);
+    }
+    
+    .container {
+        max-width: 1500px; /* Wider container for better proportions */
+    }
+    
+    .logo {
+        font-size: 0.85rem; /* Further reduced for 4K screens */
+    }
+    
+    .est-year {
+        font-size: 0.5em; /* Further reduced for 4K screens */
+        letter-spacing: 1.2px;
+    }
+}
+
+@media (min-width: 3840px) {
+    :root {
+        --navbar-height: 18px; /* Minimum size for ultra-wide screens */
+    }
+    
+    .matrix-vines {
+        height: calc(var(--navbar-height) * 2); /* Keep the original double height ratio */
+    }
+    
+    .navbar {
+        height: calc(var(--navbar-height) * 1.2); /* Translucent bar height */
+    }
+    
+    .hero {
+        margin-top: calc(-1 * var(--navbar-height) * 2); /* Match the black bar height */
+        background: linear-gradient(to bottom, 
+            var(--primary-color) calc(var(--navbar-height) * 2),
+            transparent 100%);
+    }
+    
+    .logo {
+        font-size: 0.7rem; /* Very small for ultra-wide screens */
+    }
+    
+    .est-year {
+        font-size: 0.45em; /* Very small for ultra-wide screens */
+        letter-spacing: 1px;
+    }
+    
+    .container {
+        max-width: 1800px; /* Extra wide container for ultra-wide screens */
+    }
+}
+
+/* Batch Box */
+.batch-box {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 10px 18px;
+    margin: 5px 0 15px;
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+}
+
+.batch-box .batch-title {
+    display: block;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+    color: var(--accent-color);
+    text-transform: uppercase;
+}
+
+.batch-box .batch-details {
+    display: block;
+    font-size: 0.85em;
+    margin-bottom: 6px;
+    opacity: 0.9;
+    color: var(--accent-color);
+}
+
+.batch-box .batch-price {
+    display: block;
+    font-size: 0.95em;
+    color: var(--accent-color);
+    margin-top: 2px;
+    font-weight: normal;
+}
+
+.batch-box .batch-price strong {
+    font-weight: bold;
+}
+
+/* Batch box link styling */
+.batch-box-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.batch-box-link:hover {
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+
+.batch-box-link:hover .batch-box {
+    border-color: var(--accent-color);
+    box-shadow: 0 2px 8px rgba(192, 192, 192, 0.2);
+}
+
+/* Mobile-specific navigation */
+@media (max-width: 768px) {
+    .image-navigation {
+        width: 100%; /* Match hero image width */
+        left: 0;
+        transform: none;
+    }
+}
+
+/* Slideshow Navigation - Mobile Only */
+@media (max-width: 768px) {
+    /* Keep the navigation areas for click functionality */
+    .nav-left, .nav-right {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 50%;
+        background: transparent;
+        cursor: pointer;
+        opacity: 0;
+    }
+    
+    .nav-left {
+        left: 0;
+    }
+    
+    .nav-right {
+        right: 0;
+    }
+}
+
+/* Desktop-specific navigation that spans full width */
+@media (min-width: 769px) {
+    .image-navigation {
+        width: 100vw; /* Full viewport width */
+        left: 50%;
+        transform: translateX(-50%); /* Center the navigation */
+    }
+}
+
+/* Simple triangle indicators */
+#left-indicator,
+#right-indicator {
+    position: fixed; /* Fixed position relative to viewport */
+    top: calc(50% + 69px); /* 69 pixels lower than center */
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border: 12px solid transparent;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none; /* Non-interactive */
+}
+
+#left-indicator {
+    left: 0; /* Left edge of screen */
+    border-right: 24px solid white;
+}
+
+#right-indicator {
+    right: 0; /* Right edge of screen */
+    border-left: 24px solid white;
+}
+
+/* Fade in and out animation */
+@keyframes simpleIndicatorFade {
+    0% { opacity: 0; }
+    15% { opacity: 0.33; } /* Max opacity 33% */
+    70% { opacity: 0.33; } /* Hold at 33% */
+    100% { opacity: 0; }
+}
+
+.indicator-fade {
+    animation: simpleIndicatorFade 6s ease-in-out forwards !important;
+}
+
+/* ... rest of the code remains the same ... */
+
+@media (max-width: 550px) {
+    /* Mobile-specific styles for the slogan when it would start to wrap */
+    .stackable-note {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        line-height: 1.2; /* Reduced from 1.5 to 1.2 */
+        margin-bottom: 0; /* Remove bottom margin of slogan */
+        white-space: normal; /* Allow wrapping in the stacked layout */
+    }
+    
+    .slogan-triangle {
+        display: none;
+    }
+    
+    .slogan-part {
+        display: block;
+        margin-bottom: -0.33rem; /* Further reduce spacing between stacked slogan parts */
+    }
+    
+    .slogan-part:last-child {
+        margin-bottom: 0;
+    }
+    
+    /* Reorder elements on mobile */
+    .mobile-reorder {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.5rem; /* Maintain the original spacing before the CNC text */
+    }
+    
+    .mobile-reorder .stackable-note {
+        order: 1; /* Move below the slideshow */
+        margin-top: -0.66rem; /* Add negative margin to move text up */
+    }
+    
+    .mobile-reorder .hero-image {
+        order: 0; /* Keep the slideshow at the top */
+        margin-bottom: 0; /* Remove bottom margin of slideshow */
+    }
+}
+
+@media (min-width: 551px) and (max-width: 768px) {
+    /* Prevent wrapping by forcing the stacked layout at this size too */
+    .stackable-note {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        line-height: 1.2; /* Reduced from 1.5 to 1.2 */
+        white-space: normal;
+    }
+    
+    .slogan-triangle {
+        display: none;
+    }
+    
+    .slogan-part {
+        display: block;
+        margin-bottom: -0.35rem; /* Further reduce spacing between stacked slogan parts */
+    }
+    
+    .slogan-part:last-child {
+        margin-bottom: 0;
+    }
+    
+    /* Reorder elements on medium screens too */
+    .mobile-reorder {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .mobile-reorder .stackable-note {
+        order: 1;
+        margin-top: -0.66rem; /* Add negative margin to move text up */
+    }
+    
+    .mobile-reorder .hero-image {
+        order: 0;
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 769px) {
+    .stackable-note {
+        white-space: nowrap;
+    }
+}
+
+/* Mobile-specific navigation */
+@media (max-width: 768px) {
+    .image-navigation {
+        width: 100%; /* Match hero image width */
+        left: 0;
+        transform: none;
+    }
+}
+
+/* Slideshow Navigation - Mobile Only */
+@media (max-width: 768px) {
+    /* Keep the navigation areas for click functionality */
+    .nav-left, .nav-right {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 50%;
+        background: transparent;
+        cursor: pointer;
+        opacity: 0;
+    }
+    
+    .nav-left {
+        left: 0;
+    }
+    
+    .nav-right {
+        right: 0;
+    }
+}
+
+.allet-text {
+    opacity: 0.98; /* Increased opacity for better readability */
+}
